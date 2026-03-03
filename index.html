@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LBX - Futuristic DeFi Launchpad</title>
+    <meta name="description" content="LBX revolutionizes DeFi by decoupling native assets from yield rights, offering liquid LBX certificates for enhanced capital efficiency on BSC.">
+    <meta name="keywords" content="LBX, DeFi, Launchpad, Crypto, BSC, Token, Liquidity, Yield Farming, Web3">
+    <meta name="author" content="LBX Team">
+
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="LBX - Futuristic DeFi Launchpad">
+    <meta property="og:description" content="LBX revolutionizes DeFi by decoupling native assets from yield rights, offering liquid LBX certificates for enhanced capital efficiency on BSC.">
+    <meta property="og:image" content="logo.png"> <!-- Placeholder for your logo -->
+    <meta property="og:url" content="https://www.yourlbxwebsite.com"> <!-- Replace with actual URL -->
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LBX - Futuristic DeFi Launchpad">
+    <meta name="twitter:description" content="LBX revolutionizes DeFi by decoupling native assets from yield rights, offering liquid LBX certificates for enhanced capital efficiency on BSC.">
+    <meta name="twitter:image" content="logo.png"> <!-- Placeholder for your logo -->
+
+    <style>
+        /* Basic Reset & Global Styles */
+        :root {
+            --primary-color: #6a0dad; /* Dark Purple */
+            --secondary-color: #00bcd4; /* Cyan */
+            --accent-color: #ff00ff; /* Magenta */
+            --background-dark: #1a0033; /* Very Dark Purple */
+            --background-light: #2c0050; /* Slightly Lighter Dark Purple */
+            --text-color: #e0e0e0; /* Light Grey */
+            --heading-color: #ffffff; /* White */
+            --border-color: #4a0072; /* Medium Purple */
+            --font-family-heading: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; /* System fonts */
+            --font-family-body: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; /* System fonts */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background-color: var(--background-dark);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-family-heading);
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 2rem; }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--background-light);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: var(--font-family-heading);
+            font-size: 1.8rem;
+            color: var(--heading-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo img {
+            height: 40px; /* Adjust as needed */
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-switcher button {
+            background-color: var(--primary-color);
+            color: var(--heading-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .lang-switcher button:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--accent-color);
+        }
+        
+        .lang-switcher button.active {
+            background-color: var(--accent-color);
+            border-color: var(--secondary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--heading-color);
+            cursor: pointer;
+            margin-left: 20px; /* Space between lang switcher and toggle */
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(45deg, var(--background-dark) 0%, var(--background-light) 100%);
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Self-contained SVG grid pattern */
+            background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 L 0 10" fill="none" stroke="%233a0066" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') repeat;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        #hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px var(--accent-color);
+            line-height: 1.1;
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .cta-button {
+            background-color: var(--secondary-color);
+            color: var(--background-dark);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            color: var(--heading-color);
+            box-shadow: 0 0 25px rgba(255, 0, 255, 0.7);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--background-light);
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        #about h2 {
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+
+        #about p {
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Tokenomics Section */
+        #tokenomics {
+            text-align: center;
+            background-color: var(--background-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        #tokenomics h2 {
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+        }
+
+        .token-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .token-info-item {
+            background-color: var(--background-light);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .token-info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(var(--secondary-color), 0.5);
+        }
+
+        .token-info-item h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .token-info-item p {
+            font-size: 1.2rem;
+            color: var(--heading-color);
+            font-weight: bold;
+        }
+
+        /* Roadmap Section */
+        #roadmap {
+            background-color: var(--background-light);
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        #roadmap h2 {
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--border-color);
+            transform: translateX(-50%);
+        }
+
+        .roadmap-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .roadmap-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .roadmap-item-content {
+            width: 45%;
+            background-color: var(--background-dark);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .roadmap-item-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(var(--accent-color), 0.5);
+        }
+
+        .roadmap-item-content h3 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .roadmap-item-content p {
+            font-size: 1rem;
+        }
+
+        .roadmap-item-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            border: 3px solid var(--background-light);
+            z-index: 2;
+        }
+
+        /* Social Links Section */
+        #social {
+            text-align: center;
+            background-color: var(--background-dark);
+        }
+
+        #social h2 {
+            margin-bottom: 2rem;
+            color: var(--heading-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background-color: var(--background-light);
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--accent-color);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 20px rgba(var(--secondary-color), 0.7);
+        }
+
+        .social-link svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--text-color);
+            transition: fill 0.3s ease;
+        }
+
+        .social-link:hover svg {
+            fill: var(--background-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--background-light);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            #hero h1 {
+                font-size: 3.5rem;
+            }
+            #hero p {
+                font-size: 1.3rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            h3 {
+                font-size: 1.7rem;
+            }
+            
+            nav ul {
+                display: none; /* Hide desktop nav */
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: var(--background-light);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+                padding: 20px 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            h3 { font-size: 1.8rem; }
+
+            #hero h1 {
+                font-size: 2.8rem;
+            }
+            #hero p {
+                font-size: 1.1rem;
+            }
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+
+            .roadmap-timeline::before {
+                left: 20px; /* Move timeline to left */
+            }
+
+            .roadmap-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .roadmap-item:nth-child(odd) {
+                flex-direction: column;
+            }
+
+            .roadmap-item-content {
+                width: calc(100% - 40px); /* Adjust width for padding */
+                margin-left: 40px; /* Align content to the right of the line */
+            }
+
+            .roadmap-item-dot {
+                left: 20px;
+                transform: translate(-50%, -50%);
+            }
+            
+            /* Add a small arrow to connect roadmap item content to the timeline line */
+            .roadmap-item-content::before {
+                content: '';
+                position: absolute;
+                left: -10px; /* Position to the left of the content box */
+                top: 50%;
+                transform: translateY(-50%) rotate(45deg);
+                width: 20px;
+                height: 20px;
+                background-color: var(--background-dark);
+                border-left: 1px solid var(--border-color);
+                border-bottom: 1px solid var(--border-color);
+                z-index: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            .logo img {
+                height: 30px;
+            }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.5rem; }
+            section {
+                padding: 60px 15px;
+            }
+            .social-links {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .social-link {
+                width: 60px;
+                height: 60px;
+            }
+            .social-link svg {
+                width: 30px;
+                height: 30px;
+            }
+            .lang-switcher button {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+            header {
+                padding: 10px 15px;
+            }
+            .menu-toggle {
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="logo.png" alt="LBX Logo">
+            LBX
+        </a>
+        <nav>
+            <ul id="main-nav">
+                <li><a href="#hero" data-i18n="nav_home">Home</a></li>
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#tokenomics" data-i18n="nav_tokenomics">Tokenomics</a></li>
+                <li><a href="#roadmap" data-i18n="nav_roadmap">Roadmap</a></li>
+                <li><a href="#social" data-i18n="nav_social">Social</a></li>
+            </ul>
+        </nav>
+        <div class="lang-switcher">
+            <button data-lang="en" class="active">EN</button>
+            <button data-lang="zh">ZH</button>
+        </div>
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1 data-i18n="hero_title">LBX: Unlocking DeFi Liquidity</h1>
+            <p data-i18n="hero_subtitle">Decoupling assets from yield for ultimate capital efficiency.</p>
+            <a href="#" class="cta-button" data-i18n="hero_cta">Buy LBX</a>
+        </section>
+
+        <section id="about">
+            <h2 data-i18n="about_title">About LBX</h2>
+            <p data-i18n="about_brief">In the crypto world, holding assets shouldn't come at the cost of liquidity, akin to 'imprisonment'. LBX innovatively decouples native assets from yield rights through advanced DeFi logic. Users retain underlying asset exposure while gaining highly liquid LBX certificates. This is not just asset digitization, but a secondary release of wealth – allowing every token to freely move across lending, liquidity mining, and cross-chain protocols, achieving multiple layers of yield.</p>
+        </section>
+
+        <section id="tokenomics">
+            <h2 data-i18n="tokenomics_title">Tokenomics</h2>
+            <div class="token-info-grid">
+                <div class="token-info-item">
+                    <h3 data-i18n="tokenomics_symbol">Symbol</h3>
+                    <p>LBX</p>
+                </div>
+                <div class="token-info-item">
+                    <h3 data-i18n="tokenomics_name">Name</h3>
+                    <p>LBX</p>
+                </div>
+                <div class="token-info-item">
+                    <h3 data-i18n="tokenomics_total_supply">Total Supply</h3>
+                    <p>1,000,000,000</p>
+                </div>
+                <div class="token-info-item">
+                    <h3 data-i18n="tokenomics_buy_tax">Buy Tax</h3>
+                    <p>0%</p>
+                </div>
+                <div class="token-info-item">
+                    <h3 data-i18n="tokenomics_sell_tax">Sell Tax</h3>
+                    <p>0%</p>
+                </div>
+                <div class="token-info-item">
+                    <h3 data-i18n="tokenomics_chain">Chain</h3>
+                    <p>BSC</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap">
+            <h2 data-i18n="roadmap_title">Roadmap</h2>
+            <div class="roadmap-timeline">
+                <div class="roadmap-item">
+                    <div class="roadmap-item-content">
+                        <h3 data-i18n="roadmap_q1_2024">Q1 2024: Concept & Whitepaper, Smart Contract Development, Initial Audit</h3>
+                        <p>Laying the foundational groundwork for LBX's innovative DeFi ecosystem.</p>
+                    </div>
+                    <div class="roadmap-item-dot"></div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-item-content">
+                        <h3 data-i18n="roadmap_q2_2024">Q2 2024: Private Sale, Public Launch, DEX Listing, Community Building</h3>
+                        <p>Introducing LBX to the world and fostering a strong, engaged community.</p>
+                    </div>
+                    <div class="roadmap-item-dot"></div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-item-content">
+                        <h3 data-i18n="roadmap_q3_2024">Q3 2024: Staking Platform, LP Incentives, Strategic Partnerships</h3>
+                        <p>Expanding utility and forging key alliances to enhance LBX's reach and value.</p>
+                    </div>
+                    <div class="roadmap-item-dot"></div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-item-content">
+                        <h3 data-i18n="roadmap_q4_2024">Q4 2024: Cross-chain Integration, Lending Protocol Integration, Governance Implementation</h3>
+                        <p>Achieving interoperability and decentralizing control for a truly robust ecosystem.</p>
+                    </div>
+                    <div class="roadmap-item-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="social">
+            <h2 data-i18n="social_title">Join Our Community</h2>
+            <div class="social-links">
+                <a href="https://t.me/LBX" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <!-- Telegram SVG Icon -->
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.72 7.53l-2.28 1.95-1.12 3.73c-.16.54-.59.68-1.04.43l-1.8-1.33-.87-.27-1.33-.41c-.44-.14-.43-.44.09-.65l6.3-2.4c.42-.16.79.06.65.65z"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/LBX" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <!-- Twitter SVG Icon (using X logo for modern Twitter) -->
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26L21.602 22H13.24l-5.459-6.315L2.21 22H0l8.601-9.9L0 2.25h8.084L12.91 8.817 18.244 2.25zm-2.97 1.81L7.433 18.67H5.1L14.826 3.23h2.448z"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p data-i18n="footer_copyright">© 2024 LBX. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                nav_home: "Home",
+                nav_about: "About",
+                nav_tokenomics: "Tokenomics",
+                nav_roadmap: "Roadmap",
+                nav_social: "Social",
+                hero_title: "LBX: Unlocking DeFi Liquidity",
+                hero_subtitle: "Decoupling assets from yield for ultimate capital efficiency.",
+                hero_cta: "Buy LBX",
+                about_title: "About LBX",
+                about_brief: "In the crypto world, holding assets shouldn't come at the cost of liquidity, akin to 'imprisonment'. LBX innovatively decouples native assets from yield rights through advanced DeFi logic. Users retain underlying asset exposure while gaining highly liquid LBX certificates. This is not just asset digitization, but a secondary release of wealth – allowing every token to freely move across lending, liquidity mining, and cross-chain protocols, achieving multiple layers of yield.",
+                tokenomics_title: "Tokenomics",
+                tokenomics_symbol: "Symbol",
+                tokenomics_name: "Name",
+                tokenomics_total_supply: "Total Supply",
+                tokenomics_buy_tax: "Buy Tax",
+                tokenomics_sell_tax: "Sell Tax",
+                tokenomics_chain: "Chain",
+                roadmap_title: "Roadmap",
+                roadmap_q1_2024: "Q1 2024: Concept & Whitepaper, Smart Contract Development, Initial Audit",
+                roadmap_q2_2024: "Q2 2024: Private Sale, Public Launch, DEX Listing, Community Building",
+                roadmap_q3_2024: "Q3 2024: Staking Platform, LP Incentives, Strategic Partnerships",
+                roadmap_q4_2024: "Q4 2024: Cross-chain Integration, Lending Protocol Integration, Governance Implementation",
+                social_title: "Join Our Community",
+                footer_copyright: "© 2024 LBX. All rights reserved."
+            },
+            zh: {
+                nav_home: "首页",
+                nav_about: "关于",
+                nav_tokenomics: "代币经济学",
+                nav_roadmap: "路线图",
+                nav_social: "社区",
+                hero_title: "LBX: 解锁DeFi流动性",
+                hero_subtitle: "将资产与收益解耦，实现极致的资本效率。",
+                hero_cta: "购买LBX",
+                about_title: "关于LBX",
+                about_brief: "在加密世界，资产的持有不应是以牺牲流动性为代价的“监禁”。LBX 通过创新的 DeFi 逻辑，将原生资产与收益权解耦。用户在保留底层资产风险敞口的同时，获得极具流动性的 LBX 凭证。这不仅是资产的数字化，更是财富的二次释放——让每一枚代币都能在借贷、流动性挖矿和跨链协议中自由穿梭，实现收益的多重叠加。",
+                tokenomics_title: "代币经济学",
+                tokenomics_symbol: "符号",
+                tokenomics_name: "名称",
+                tokenomics_total_supply: "总供应量",
+                tokenomics_buy_tax: "买入税",
+                tokenomics_sell_tax: "卖出税",
+                tokenomics_chain: "链",
+                roadmap_title: "路线图",
+                roadmap_q1_2024: "2024年第一季度：概念与白皮书，智能合约开发，初步审计",
+                roadmap_q2_2024: "2024年第二季度：私募，公开上线，DEX上市，社区建设",
+                roadmap_q3_2024: "2024年第三季度：质押平台，LP激励，战略合作",
+                roadmap_q4_2024: "2024年第四季度：跨链集成，借贷协议集成，治理实施",
+                social_title: "加入我们的社区",
+                footer_copyright: "© 2024 LBX. 保留所有权利。"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update active class for language buttons
+            document.querySelectorAll('.lang-switcher button').forEach(button => {
+                if (button.getAttribute('data-lang') === lang) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+            localStorage.setItem('preferredLang', lang);
+            document.documentElement.lang = lang; // Update HTML lang attribute
+        }
+
+        // Language switcher event listeners
+        document.querySelectorAll('.lang-switcher button').forEach(button => {
+            button.addEventListener('click', () => {
+                setLanguage(button.getAttribute('data-lang'));
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+
+        // Close mobile menu when a nav link is clicked
+        document.querySelectorAll('#main-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
